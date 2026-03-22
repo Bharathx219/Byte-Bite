@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte-Bite | Forgot Password</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="forgot-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+
+<body>
+    <main class="login-layout">
+        <section class="brand-panel">
+            <a href="index.html" class="brand-link">
+                <img src="Logo.png" alt="Byte-Bite Logo" class="brand-logo-image">
+                <h1>BYTE-BITE</h1>
+            </a>
+            <p class="tagline">Restaurant-quality meals, delivered faster than your cravings.</p>
+            <div class="trust-row">
+                <span><i class="fa-solid fa-bolt"></i> 30 min delivery</span>
+                <span><i class="fa-solid fa-shield-heart"></i> Safe & verified kitchens</span>
+            </div>
+        </section>
+
+        <section class="form-panel">
+            <div class="form-wrapper">
+                <p class="eyebrow">Recovery</p>
+                <h2>Forgot Password</h2>
+                <form id="forgotForm" novalidate>
+                    <div class="input-group">
+                        <label for="username">Email Address / Username</label>
+                        <input type="text" id="username" placeholder="Enter your email or username" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="login-btn reset-btn">Send Recovery Link</button>
+                    </div>
+                </form>
+                <p class="signup-note">Remember your password? <a href="login.html">Sign in here</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="forgot-script.js"></script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

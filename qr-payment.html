@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan to Pay | Byte - Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="qr-payment.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+<body>
+    <main class="qr-screen">
+        <a class="back-link" href="online-payment.html"><i class="fa-solid fa-arrow-left"></i></a>
+        <p id="providerLabel" class="provider-label">PhonePe</p>
+        <div class="qr-card">
+            <h1>BYTE - BITE</h1>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=byte-bite-order-payment" alt="Scan to pay QR code">
+            <p>SCAN TO PAY</p>
+        </div>
+        <button class="done-btn" onclick="window.location.href='order-success.html?method=online'">Done</button>
+    </main>
+
+    <script>
+        const provider = new URLSearchParams(window.location.search).get('provider');
+        const providerLabel = document.getElementById('providerLabel');
+        providerLabel.textContent = provider === 'gpay' ? 'Google Pay' : 'PhonePe';
+    </script>
+
+    <script src="back-button.js"></script>
+</body>
+</html>
+
+
+

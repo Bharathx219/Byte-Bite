@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed | Byte-Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8c2828 0%, #5a1717 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-wrapper {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 60px 50px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .success-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.35);
+            animation: bounceIn 0.6s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .success-ring i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .brand-row img {
+            height: 32px;
+        }
+
+        .brand-row span {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #8c2828;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #686b78;
+            margin-bottom: 8px;
+        }
+
+        .method-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0fdf4;
+            color: #059669;
+            border: 1px solid #bbf7d0;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 16px 0 32px;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .info-card {
+            background: #f7f9fa;
+            border-radius: 12px;
+            padding: 18px 14px;
+            text-align: center;
+        }
+
+        .info-card i {
+            font-size: 1.4rem;
+            color: #8c2828;
+            margin-bottom: 8px;
+        }
+
+        .info-card .label {
+            font-size: 0.78rem;
+            color: #93959f;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-card .value {
+            font-size: 0.95rem;
+            color: #282c3f;
+            font-weight: 700;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e9e9eb;
+            margin: 0 0 28px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #8c2828;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 100%;
+            transition: background 0.2s, transform 0.15s;
+            letter-spacing: 0.3px;
+        }
+
+        .home-btn:hover {
+            background: #681d1d;
+            transform: translateY(-2px);
+        }
+
+        .track-link {
+            display: block;
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: #8c2828;
+            font-weight: 600;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .track-link:hover {
+            opacity: 1;
+        }
+
+        .confetti-row {
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="success-wrapper">
+        <div class="confetti-row">🎉 🍔 🎊</div>
+
+        <div class="success-ring">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <div class="brand-row">
+            <img src="Logo.png" alt="Byte-Bite Logo">
+            <span>BYTE-BITE</span>
+        </div>
+
+        <h1>Order Placed Successfully!</h1>
+        <p class="subtitle">Your delicious food is being prepared.</p>
+
+        <div class="method-badge" id="methodBadge">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="methodLabel">Payment Confirmed</span>
+        </div>
+
+        <div class="info-cards">
+            <div class="info-card">
+                <i class="fa-solid fa-clock"></i>
+                <div class="label">Estimated Time</div>
+                <div class="value">30 - 40 mins</div>
+            </div>
+            <div class="info-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <div class="label">Delivering To</div>
+                <div class="value" id="deliveryAddr">Your Address</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <a href="menu.html" class="home-btn">
+            <i class="fa-solid fa-utensils"></i>
+            Back to Menu
+        </a>
+        <a href="menu.html" class="track-link">
+            <i class="fa-solid fa-route"></i> Track Your Order
+        </a>
+    </div>
+
+    <script>
+        const method = new URLSearchParams(window.location.search).get('method');
+        const label = document.getElementById('methodLabel');
+        const badge = document.getElementById('methodBadge');
+        const addr = document.getElementById('deliveryAddr');
+
+        if (method === 'cod') {
+            label.textContent = 'Cash on Delivery';
+            badge.style.background = '#fffbeb';
+            badge.style.color = '#d97706';
+            badge.style.borderColor = '#fde68a';
+            badge.querySelector('i').style.color = '#d97706';
+        } else {
+            label.textContent = 'Online Payment';
+        }
+
+        const savedAddr = localStorage.getItem('bb_location');
+        if (savedAddr) {
+            addr.textContent = savedAddr.length > 18 ? savedAddr.substring(0, 18) + '…' : savedAddr;
+        }
+    </script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

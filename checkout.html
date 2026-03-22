@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Byte-Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="checkout-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+    <link rel="stylesheet" href="landing-style.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: #f5f5f5;
+            color: var(--bb-ink);
+        }
+
+        /* Modern Top Bar */
+        .topbar {
+            background: var(--bb-card);
+            padding: 12px 20px;
+            box-shadow: var(--bb-shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--bb-ink);
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .brand h1 {
+            font-family: var(--font-brand);
+            font-size: 16px;
+            color: var(--bb-bg);
+        }
+
+        .brand p {
+            font-size: 11px;
+            color: var(--bb-muted);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--bb-ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--bb-accent);
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 11px;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cart Section */
+        .cart-section {
+            background: var(--bb-card);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--bb-shadow-sm);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--bb-border);
+        }
+
+        .cart-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-header h2 i {
+            color: var(--bb-accent);
+        }
+
+        .home-link {
+            color: var(--bb-accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border: 1px solid var(--bb-accent);
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .home-link:hover {
+            background: var(--bb-accent);
+            color: var(--bb-card);
+        }
+
+        /* Cart Items */
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bb-paper);
+            border-radius: 10px;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .cart-item:hover {
+            box-shadow: var(--bb-shadow-sm);
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--bb-bg), var(--bb-accent));
+        }
+
+        .item-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .item-info p {
+            font-size: 12px;
+            color: var(--bb-muted);
+            margin-bottom: 6px;
+        }
+
+        .item-price {
+            color: var(--bb-accent);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--bb-border);
+            background: var(--bb-card);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: var(--transition);
+            color: var(--bb-ink);
+        }
+
+        .qty-btn:hover {
+            border-color: var(--bb-accent);
+            color: var(--bb-accent);
+        }
+
+        .qty-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--bb-error);
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .remove-btn:hover {
+            transform: scale(1.2);
+        }
+
+        /* Summary Section */
+        .summary-section {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .order-summary-box {
+            background: var(--bb-card);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--bb-shadow-sm);
+            margin-bottom: 16px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 8px 0;
+            color: var(--bb-muted);
+        }
+
+        .summary-row.header-row {
+            font-weight: 700;
+            color: var(--bb-ink);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--bb-border);
+            margin-bottom: 12px;
+        }
+
+        .summary-details {
+            margin-bottom: 12px;
+        }
+
+        .summary-row.grand-total {
+            font-weight: 700;
+            color: var(--bb-bg);
+            font-size: 16px;
+            padding-top: 12px;
+            border-top: 2px solid var(--bb-border);
+            margin-top: 12px;
+        }
+
+        /* Address Section */
+        .address-section {
+            background: var(--bb-card);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--bb-shadow-sm);
+            margin-bottom: 16px;
+        }
+
+        .address-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .location-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--bb-paper);
+            border: 1px solid var(--bb-border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: var(--transition);
+            color: var(--bb-ink);
+            font-weight: 500;
+        }
+
+        .location-btn:hover {
+            border-color: var(--bb-accent);
+            box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.1);
+        }
+
+        .location-btn i:first-child {
+            color: var(--bb-accent);
+        }
+
+        .location-btn i:last-child {
+            margin-left: auto;
+            color: var(--bb-muted);
+        }
+
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--bb-accent);
+            color: var(--bb-card);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .place-order-btn:hover {
+            background: var(--bb-accent-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--bb-shadow-md);
+        }
+
+        .final-price {
+            text-align: center;
+            font-size: 12px;
+            color: var(--bb-muted);
+            padding: 8px 0;
+        }
+
+        /* Empty Cart */
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--bb-muted);
+        }
+
+        .empty-cart i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-cart p {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .empty-cart a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--bb-accent);
+            color: var(--bb-card);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .empty-cart a:hover {
+            background: var(--bb-accent-dark);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+                gap: 16px;
+            }
+
+            .cart-section,
+            .order-summary-box,
+            .address-section {
+                padding: 16px;
+            }
+
+            .cart-item {
+                grid-template-columns: 60px 1fr 80px;
+                gap: 12px;
+            }
+
+            .cart-item img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .summary-section {
+                position: static;
+            }
+
+            .summary-row {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Maroon Header overlaying body -->
+    <header>
+        <div class="logo-area" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+            <img src="Logo.png" alt="Byte-Bite Logo" class="logo-image">
+            <h1>BYTE - BITE</h1>
+        </div>
+
+        <div class="auth-profile-area">
+            <a href="search.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+            </a>
+            <a href="dineout.html" class="nav-link">
+                <i class="fa-solid fa-utensils"></i> Dine Out
+            </a>
+            <a href="offers-modern.html" class="nav-link">
+                <i class="fa-solid fa-tag"></i> Offers
+            </a>
+            <a href="checkout.html" class="nav-link" style="position: relative;">
+                <i class="fa-solid fa-shopping-cart"></i> Cart
+                <span id="navCartCountTop" class="cart-count hidden" style="position: absolute; top: -5px; right: -15px; background: red; color: white; width: 18px; height: 18px; border-radius: 50%; font-size: 11px; display: flex; align-items: center; justify-content: center; font-family: sans-serif;">0</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fa-solid fa-circle-user"></i> Profile
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="cart-section">
+            <div class="cart-header">
+                <h2><i class="fa-solid fa-shopping-cart"></i>Your Cart</h2>
+                <a href="menu.html" class="home-link">Continue Shopping</a>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+        </section>
+
+        <aside class="summary-section">
+            <div class="order-summary-box">
+                <div class="summary-row header-row">
+                    <span>Order Summary</span>
+                    <span id="summaryTopTotal">₹0</span>
+                </div>
+                <div class="summary-details">
+                    <div class="summary-row"><span>Item Total</span><span id="itemTotal">₹0</span></div>
+                    <div class="summary-row"><span>Delivery Fee</span><span id="deliveryFee">₹0</span></div>
+                    <div class="summary-row"><span>Platform Fee</span><span id="platformFee">₹0</span></div>
+                    <div class="summary-row"><span>Taxes</span><span id="taxes">₹0</span></div>
+                </div>
+                <div class="summary-row grand-total">
+                    <span>Grand Total</span>
+                    <span id="grandTotal">₹0</span>
+                </div>
+            </div>
+
+            <section class="address-section">
+                <h3><i class="fa-solid fa-map-pin"></i> Delivery Address</h3>
+                <button type="button" class="location-btn" id="locationBtn">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="addressLabel">Set your delivery location</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </section>
+
+            <div class="action-bar">
+                <button type="button" class="place-order-btn" id="placeOrderBtn">Place Order</button>
+                <span class="final-price" id="finalPrice">₹0</span>
+            </div>
+        </aside>
+    </main>
+
+    <script src="cart-utils.js"></script>
+    <script src="checkout-script.js"></script>
+
+    <script>
+        function updateNavCartCountTop() {
+            const totalItems = ByteBiteCart && ByteBiteCart.getItemCount ? ByteBiteCart.getItemCount() : 0;
+            const countBadge = document.getElementById('navCartCountTop');
+            if (countBadge) {
+                if (totalItems > 0) {
+                    countBadge.textContent = totalItems;
+                    countBadge.style.display = 'flex';
+                } else {
+                    countBadge.style.display = 'none';
+                }
+            }
+        }
+        document.addEventListener('cartUpdated', updateNavCartCountTop);
+        window.addEventListener('load', updateNavCartCountTop);
+        setInterval(updateNavCartCountTop, 1000);
+    </script>
+    <script src="back-button.js"></script>
+</body>
+</html>
+
+
+

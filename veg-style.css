@@ -1,0 +1,364 @@
+/* Swiggy Style for Category Pages */
+:root {
+    --text-black: #282c3f;
+    --text-grey: #686b78;
+    --bg-white: #ffffff;
+    --rating-green: #24963f;
+    --time-color: #535665;
+    --bg-grey: #f5f5f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-white);
+    font-family: 'Basis Grotesque Pro', 'Proxima Nova', 'Plus Jakarta Sans', Arial, sans-serif;
+    color: var(--text-black);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* === Swiggy Modern Navbar === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #fff;
+    box-shadow: 0 15px 40px -20px rgba(40, 44, 63, .15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo-box {
+    width: 40px;
+    transition: transform 0.2s;
+}
+
+.logo-box:hover {
+    transform: scale(1.1);
+}
+
+.nav-logo {
+    width: 100%;
+    height: auto;
+}
+
+.location-dropdown {
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #3d4152;
+}
+
+.location-dropdown span {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #686b78;
+    font-weight: 400;
+}
+
+.location-dropdown span:hover {
+    color: #8c2828;
+}
+
+.location-dropdown i {
+    color: #8c2828;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #3d4152;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-item:hover {
+    color: #8c2828;
+}
+
+.cart-count {
+    background: #60b246;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    position: relative;
+    top: -5px;
+    right: 5px;
+}
+
+/* === Main Layout === */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 80px;
+}
+
+/* === Section 1: Default Header/Carousel === */
+.mind-section {
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #02060c;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    background: #e2e2e7;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #02060c;
+}
+
+.arrow-btn:hover {
+    background: #d4d5d9;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.circle-item {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 140px;
+    cursor: pointer;
+}
+
+.circle-item img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.circle-item:hover img {
+    transform: scale(1.05);
+}
+
+.circle-item p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3d4152;
+    text-align: center;
+}
+
+/* === Divider === */
+.divider {
+    border: 0;
+    border-top: 1px solid #f1f1f6;
+    margin: 40px 0;
+}
+
+/* === Section 2: Restaurants === */
+.restaurants-section h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 32px;
+}
+
+/* Swiggy Style Card */
+.rest-card {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rest-card:hover {
+    transform: scale(0.96);
+}
+
+.rest-img-box {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: #f4f4f5;
+}
+
+.rest-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.price-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    color: white;
+    padding: 25px 12px 10px;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.rest-info {
+    padding: 0 4px;
+}
+
+.rest-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #282c3f;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.star-rating {
+    color: #3d4152;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star-rating i {
+    color: #24963f;
+    font-size: 14px;
+}
+
+.rating-row::after {
+    content: "•";
+    color: #686b78;
+    margin: 0 2px;
+}
+
+.time-text {
+    color: #3d4152;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* For Cuisines/Subtext */
+.rest-info .subtext {
+    color: #686b78;
+    font-size: 15px;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nav-right {
+        gap: 20px;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .nav-item {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-left {
+        gap: 15px;
+    }
+
+    .carousel-container {
+        gap: 16px;
+    }
+
+    .circle-item {
+        width: 100px;
+    }
+
+    .circle-item img {
+        width: 100px;
+        height: 100px;
+    }
+}

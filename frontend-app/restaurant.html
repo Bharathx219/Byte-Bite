@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Byte Bite | Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">Byte Bite</a>
+        <div class="nav-links">
+          <a class="chip" href="index.html">Offers</a>
+          <a class="chip" href="cart.html">Cart <span data-cart-count>0</span></a>
+          <a class="chip" data-login-link href="login.html">Login</a>
+          <a class="chip hidden" data-profile-link href="profile.html">Profile</a>
+          <button class="chip hidden" data-logout>Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container menu-layout">
+      <section>
+        <header id="menuHeader" class="menu-header"></header>
+        <div id="menuList" style="display:grid;gap:.8rem;"></div>
+      </section>
+      <aside class="panel">
+        <h3>Cart Snapshot</h3>
+        <div id="miniCart"></div>
+        <a class="btn btn-primary" style="margin-top:1rem;display:inline-block;" href="cart.html">Go to Cart</a>
+      </aside>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/restaurant.js"></script>
+  
+    <script src="../back-button.js"></script>
+</body>
+</html>
+

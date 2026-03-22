@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Byte-Bite</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="premium-payment.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="payment-header">
+        <div class="brand-section">
+            <a href="checkout.html"
+                style="color:var(--pay-muted); margin-right: 15px; font-size: 1.2rem; cursor:pointer;" title="Go Back">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <img src="Logo.png" alt="Byte-Bite Logo">
+            <h1>BYTE-BITE</h1>
+        </div>
+        <div class="secure-badge">
+            <i class="fa-solid fa-lock"></i> SSL Secure Checkout
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="payment-container">
+
+        <!-- Left: Payment details -->
+        <section class="payment-methods-card">
+            <h2 class="section-title">Payment Authorization</h2>
+
+            <div class="method-tabs">
+                <button class="method-tab active" id="tabCard" onclick="switchTab('card')"><i
+                        class="fa-regular fa-credit-card"></i> Card</button>
+                <button class="method-tab" id="tabUpi" onclick="switchTab('upi')"><i
+                        class="fa-brands fa-google-pay"></i> UPI</button>
+                <button class="method-tab" id="tabCash" onclick="switchTab('cash')"><i
+                        class="fa-solid fa-money-bill-1-wave"></i> Cash</button>
+            </div>
+
+            <div class="card-form" id="cardForm">
+                <div class="input-group">
+                    <label for="cardNumber">Card Number</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <input type="text" id="cardNumber" class="pay-input" placeholder="0000 0000 0000 0000"
+                            maxlength="19" oninput="formatCardNumber(this)">
+                    </div>
+                </div>
+
+                <div class="row-inputs">
+                    <div class="input-group">
+                        <label for="cardExpiry">Expiration (MM/YY)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input type="text" id="cardExpiry" class="pay-input" placeholder="MM / YY" maxlength="7"
+                                oninput="formatExpiry(this)">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cardCvc">Security Code (CVC)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="cardCvc" class="pay-input" placeholder="•••" maxlength="4"
+                                autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="cardName">Cardholder Name</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="cardName" class="pay-input" placeholder="Name on card"
+                            autocomplete="name">
+                    </div>
+                </div>
+
+                <div class="save-card-wrapper">
+                    <input type="checkbox" id="saveCard" checked>
+                    <label for="saveCard">Save this card for faster checkout next time</label>
+                </div>
+            </div>
+
+            <div class="upi-form" id="upiForm">
+                <h3 class="upi-title">Select your UPI App to Pay</h3>
+                <div class="upi-methods-grid">
+                    <button class="upi-app-btn" onclick="processUpiPayment('PhonePe')">
+                        <i class="fa-solid fa-mobile-screen" style="color:#5e2a86; font-size:1.6rem;"></i>
+                        PhonePe
+                    </button>
+                    <button class="upi-app-btn" onclick="processUpiPayment('Google Pay')">
+                        <i class="fa-brands fa-google-pay" style="font-size:2rem;"></i>
+                        Google Pay
+                    </button>
+                </div>
+            </div>
+
+            <div class="cash-form" id="cashForm"
+                style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center;">
+                <i class="fa-solid fa-money-bill-wave"
+                    style="font-size: 3.5rem; color: #0f8a65; margin-bottom: 15px;"></i>
+                <h3 style="margin-bottom: 10px; font-size: 1.2rem; font-weight: 700;">Cash on Delivery</h3>
+                <p
+                    style="color: var(--pay-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; max-width: 320px;">
+                    Please keep exact change ready. Our delivery partner will collect the amount upon delivering your
+                    food.
+                </p>
+                <button class="pay-submit-btn"
+                    style="background-color: #0f8a65; color: white; width: 100%; max-width: 250px; font-weight: 700; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s;"
+                    onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'"
+                    onclick="processCashPayment()">
+                    <i class="fa-solid fa-check"></i> Place Order
+                </button>
+            </div>
+
+            <div class="trust-brands">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-discover"></i>
+            </div>
+        </section>
+
+        <!-- Right: Order Summary box -->
+        <aside class="summary-card">
+            <h3 style="margin-bottom: 20px; font-weight:700;">Order Summary</h3>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subTotalAmt">₹0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery & Platform</span>
+                <span id="feeAmt">₹0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Taxes</span>
+                <span id="taxAmt">₹0.00</span>
+            </div>
+
+            <div class="summary-row total-row">
+                <span>Total Due</span>
+                <span id="grandTotalAmt">₹0</span>
+            </div>
+
+            <button class="pay-submit-btn" id="payBtn" onclick="processPayment()">
+                Pay <span id="btnTotal">₹0</span>
+            </button>
+            <p style="text-align:center; font-size:0.8rem; color:var(--pay-muted); margin-top:10px;">By authorizing this
+                payment, you agree to our Terms of Service.</p>
+        </aside>
+
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="processing-overlay" id="overlay">
+        <div class="spinner" id="spinner"></div>
+        <i class="fa-solid fa-circle-check success-icon" id="successIcon"></i>
+        <h2 style="color: var(--pay-primary); margin-top: 10px;" id="overlayText">Authorizing Payment...</h2>
+        <p style="color: var(--pay-muted); font-size: 0.9rem;" id="overlaySubtext">Please do not close this window</p>
+    </div>
+
+    <script src="cart-utils.js"></script>
+    <script>
+        // Setup Pricing visually based on ByteBiteCart totals
+        document.addEventListener('DOMContentLoaded', () => {
+            const totals = window.ByteBiteCart ? window.ByteBiteCart.getTotals() : null;
+            if (totals && totals.grandTotal > 0) {
+                document.getElementById("subTotalAmt").textContent = `₹${totals.itemTotal.toFixed(2)}`;
+                document.getElementById("feeAmt").textContent = `₹${(totals.deliveryFee + totals.platformFee).toFixed(2)}`;
+                document.getElementById("taxAmt").textContent = `₹${totals.taxes.toFixed(2)}`;
+                document.getElementById("grandTotalAmt").textContent = `₹${totals.grandTotal.toFixed(2)}`;
+                document.getElementById("btnTotal").textContent = `₹${totals.grandTotal.toFixed(2)}`;
+            } else {
+                // Fallback for direct page visits
+                document.getElementById("subTotalAmt").textContent = "₹640.00";
+                document.getElementById("feeAmt").textContent = "₹45.00";
+                document.getElementById("taxAmt").textContent = "₹32.00";
+                document.getElementById("grandTotalAmt").textContent = "₹717.00";
+                document.getElementById("btnTotal").textContent = "₹717.00";
+            }
+        });
+
+        // Nice Card Number Formatting
+        function formatCardNumber(input) {
+            let val = input.value.replace(/\D/g, ''); // strip non-digits
+            let newVal = '';
+            for (let i = 0; i < val.length; i++) {
+                if (i > 0 && i % 4 === 0) newVal += ' ';
+                newVal += val[i];
+            }
+            input.value = newVal;
+        }
+
+        // Nice Expiry Formatting (MM / YY)
+        function formatExpiry(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length >= 2) {
+                val = val.substring(0, 2) + ' / ' + val.substring(2, 4);
+            }
+            input.value = val;
+        }
+
+        // Tab Switching Logic
+        function switchTab(tab) {
+            const cardForm = document.getElementById('cardForm');
+            const upiForm = document.getElementById('upiForm');
+            const cashForm = document.getElementById('cashForm');
+            const tabCard = document.getElementById('tabCard');
+            const tabUpi = document.getElementById('tabUpi');
+            const tabCash = document.getElementById('tabCash');
+            const payBtnContainer = document.getElementById('payBtn');
+
+            // Reset forms
+            cardForm.style.display = 'none';
+            upiForm.style.display = 'none';
+            if (cashForm) cashForm.style.display = 'none';
+
+            // Reset tabs
+            tabCard.classList.remove('active');
+            tabUpi.classList.remove('active');
+            if (tabCash) tabCash.classList.remove('active');
+
+            // Hide general pay button by default
+            payBtnContainer.style.display = 'none';
+
+            if (tab === 'card') {
+                cardForm.style.display = 'flex';
+                tabCard.classList.add('active');
+                payBtnContainer.style.display = 'flex';
+            } else if (tab === 'upi') {
+                upiForm.style.display = 'flex';
+                tabUpi.classList.add('active');
+            } else if (tab === 'cash') {
+                if (cashForm) cashForm.style.display = 'flex';
+                if (tabCash) tabCash.classList.add('active');
+            }
+        }
+
+        // Handle UPI Specific Payment
+        function processUpiPayment(provider) {
+            const overlayText = document.getElementById("overlayText");
+            overlayText.textContent = `Opening ${provider}...`;
+            executePaymentSimulation('upi');
+        }
+
+        function processCashPayment() {
+            const overlayText = document.getElementById("overlayText");
+            overlayText.textContent = `Confirming your order...`;
+            executePaymentSimulation('cod');
+        }
+
+        // Shared Execution Logic to avoid duplicate code
+        async function executePaymentSimulation(method = "card") {
+            const overlay = document.getElementById("overlay");
+            const spinner = document.getElementById("spinner");
+            const successIcon = document.getElementById("successIcon");
+            const overlayText = document.getElementById("overlayText");
+            const overlaySubtext = document.getElementById("overlaySubtext");
+            const token = localStorage.getItem("bb_token");
+
+            if (!token) {
+                alert("Your session has expired. Please log in again.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            overlay.classList.add("active");
+
+            try {
+                const cartItems = window.ByteBiteCart ? window.ByteBiteCart.getCart() : [];
+                const locationAddress = localStorage.getItem("bb_location") || "Default Address";
+
+                const response = await fetch("/api/orders", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        deliveryAddress: locationAddress,
+                        paymentMethod: method,
+                        items: cartItems
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    throw new Error(data.message || "Order placement failed.");
+                }
+
+                // Change to Success
+                spinner.style.display = "none";
+                successIcon.style.display = "block";
+                overlayText.textContent = method === 'cod' ? "Order Placed Successfully!" : "Payment Successful!";
+                overlayText.style.color = "var(--pay-success)";
+                overlaySubtext.textContent = "Redirecting to your order confirmation...";
+
+                setTimeout(() => {
+                    if (window.ByteBiteCart) {
+                        window.ByteBiteCart.clearCart();
+                    }
+                    window.location.href = "order-success.html" + (method === 'cod' ? "?method=cod" : "");
+                }, 1500);
+
+            } catch (error) {
+                console.error("Payment error:", error);
+                overlay.classList.remove("active");
+                alert(error.message || "An error occurred while authorizing your payment.");
+                if (document.getElementById("payBtn")) {
+                    document.getElementById("payBtn").disabled = false;
+                }
+            }
+        }
+
+        // Fake Processing Animation for Card
+        function processPayment() {
+            // Validation
+            const cardNum = document.getElementById("cardNumber").value.length;
+            const cardExp = document.getElementById("cardExpiry").value.length;
+            const cardCvc = document.getElementById("cardCvc").value.length;
+
+            if (cardNum < 18 || cardExp < 7 || cardCvc < 3) {
+                alert("Please complete all card details to authorize payment.");
+                return;
+            }
+
+            const payBtn = document.getElementById("payBtn");
+            const overlayText = document.getElementById("overlayText");
+
+            // Start Loading
+            payBtn.disabled = true;
+            overlayText.textContent = "Authorizing Card...";
+
+            executePaymentSimulation("card");
+        }
+    </script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

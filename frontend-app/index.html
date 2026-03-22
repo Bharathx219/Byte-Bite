@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Byte Bite - Fast and modern food delivery." />
+    <title>Byte Bite | Food Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">Byte Bite</a>
+        <div class="nav-links">
+          <a class="chip" href="index.html">Offers</a>
+          <a class="chip" href="cart.html">Cart <span data-cart-count>0</span></a>
+          <a class="chip" data-login-link href="login.html">Login</a>
+          <a class="chip hidden" data-profile-link href="profile.html">Profile</a>
+          <a class="chip hidden" data-admin-link href="admin.html">Admin</a>
+          <button class="chip hidden" data-logout>Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+        <h1>Hungry? Let Byte Bite deliver.</h1>
+        <p>Find top-rated restaurants and get hot food at your doorstep.</p>
+        <div class="hero-controls">
+          <input id="locationInput" type="text" placeholder="Enter delivery location" />
+          <input id="searchInput" type="text" placeholder="Search restaurants or cuisines" />
+          <button id="searchBtn" class="btn btn-primary">Find Food</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="filters">
+        <select id="ratingFilter">
+          <option value="">Rating</option>
+          <option value="4">4.0+</option>
+          <option value="4.5">4.5+</option>
+        </select>
+        <select id="vegFilter">
+          <option value="">Veg / Non-Veg</option>
+          <option value="true">Veg Only</option>
+        </select>
+        <select id="priceFilter">
+          <option value="">Price for two</option>
+          <option value="300">Up to 300</option>
+          <option value="500">Up to 500</option>
+          <option value="800">Up to 800</option>
+        </select>
+        <select id="sortBy">
+          <option value="">Sort</option>
+          <option value="rating">Top Rated</option>
+          <option value="deliveryTime">Fast Delivery</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+        </select>
+      </section>
+      <div id="loader" class="spinner hidden"></div>
+      <section id="restaurantGrid" class="grid"></section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/index.js"></script>
+  
+    <script src="../back-button.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,194 @@
+/* Core layout styles for Byte-Bite interior pages (Menu, Veg, NonVeg, FastFood, etc) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary, 'Basis Grotesque Pro', 'Proxima Nova', 'Plus Jakarta Sans', Arial, sans-serif);
+    background-color: var(--bb-light-gray, #f5f5f6);
+    color: var(--bb-ink, #282c3f);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Base Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    font-family: var(--font-primary, Montserrat, sans-serif);
+    font-weight: 900;
+    font-size: 26px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    color: var(--bb-ink, #282c3f);
+    letter-spacing: -0.5px;
+}
+
+/* Swiggy Cards Grid Layout */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Swiggy Modern Card */
+.card {
+    background: var(--bb-card, #ffffff);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+    cursor: pointer;
+    border: 1px solid var(--bb-border-light, #f1f1f6);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: scale(0.975);
+    box-shadow: 0 4px 16px rgba(40, 44, 63, 0.1);
+}
+
+/* Image Wrapper and Image */
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* The Heavy shadow discount badge over image */
+.promo-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 25px 15px 10px;
+    font-weight: 900;
+    font-size: 19px;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    font-family: var(--font-brand, 'Basis Grotesque Pro', sans-serif);
+}
+
+/* Text Section of Card */
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-content h3 {
+    font-family: var(--font-primary, Montserrat, sans-serif);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--bb-ink, #282c3f);
+    margin-bottom: 5px;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Rating and Time Container */
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--bb-ink, #282c3f);
+    margin-bottom: 5px;
+}
+
+.rating-row i {
+    color: white;
+    background: #1aa05f;
+    padding: 3px;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+/* Cuisines and Locations details */
+.cuisines {
+    font-size: 14px;
+    color: var(--bb-muted, #686b78);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+
+/* Old styles to hide or reset so they don't break menu */
+.badge {
+    display: none;
+}
+
+.arrow-btn {
+    display: none;
+}
+
+.hero {
+    display: none;
+}
+
+/* Responsive Grid adjustment */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    .card-image-wrapper {
+        height: 170px;
+    }
+}
+
+.footer-decoration {
+    position: relative;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line {
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+}
+
+.cute-burger {
+    width: 60px;
+    height: auto;
+    margin-left: 20px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s;
+}
+
+.cute-burger:hover {
+    transform: scale(1.1) rotate(10deg);
+}

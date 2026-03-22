@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte - Bite Fast Food</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="fastfood-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo-box">
+                <img src="Logo.png" alt="Logo" class="nav-logo">
+            </div>
+            <div class="location-dropdown">
+                <span>other</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="menu.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="search.html" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>search</span>
+            </a>
+            <a href="offers.html" class="nav-item">
+                <i class="fa-solid fa-percent"></i>
+                <span>offers</span>
+            </a>
+            <a href="help.html" class="nav-item">
+                <i class="fa-solid fa-handshake"></i>
+                <span>help</span>
+            </a>
+            <a href="checkout.html" class="nav-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+                <span class="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <section class="mind-section">
+            <div class="section-header">
+                <h2>what's on your mind ?</h2>
+                <div class="nav-arrows">
+                    <button class="arrow-btn" id="scrollLeft"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="arrow-btn" id="scrollRight"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="carousel-container" id="carousel">
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Burger">
+                    <p>Burger</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Pizza">
+                    <p>Pizza</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1573010339380-01967d5613fb?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Fries">
+                    <p>French fries</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1541514702238-bdd816c21db9?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Kathi roles">
+                    <p>Kathi roles</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70948?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Samosa">
+                    <p>Samosa</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Sandwich">
+                    <p>Sandwich</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="restaurants-section">
+            <h2>Top restaurants in Vizianagaram</h2>
+
+            <div class="restaurant-grid">
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product-pizza.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=350&fit=crop"
+                            alt="KFC">
+                        <div class="price-badge">Items at ₹199</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>KFC</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.3
+                            </div>
+                        </div>
+                        <p class="time-text">20 - 30 min</p>
+                    </div>
+                </div>
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product-pizza.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=350&fit=crop"
+                            alt="Dominos">
+                        <div class="price-badge">Items at ₹199</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>Dominos</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 3.8
+                            </div>
+                        </div>
+                        <p class="time-text">25 - 30 min</p>
+                    </div>
+                </div>
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product-pizza.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&h=350&fit=crop"
+                            alt="FC Den's">
+                        <div class="price-badge">Items at ₹199</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>FC Den's</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.2
+                            </div>
+                        </div>
+                        <p class="time-text">30 - 35 min</p>
+                    </div>
+                </div>
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product-pizza.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=350&fit=crop"
+                            alt="Happy Fast Foods">
+                        <div class="price-badge">Items at ₹199</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>Happy Fast Foods</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.0
+                            </div>
+                        </div>
+                        <p class="time-text">35 - 40 min</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    <script src="cart-utils.js"></script>
+    <script src="fastfood-script.js"></script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

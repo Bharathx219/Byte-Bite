@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte-Bite | Edit Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="edit-profile-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+<body>
+    <header class="page-head">
+        <a href="menu.html" class="brand-link">
+            <img src="Logo.png" alt="Byte-Bite logo" class="logo-img">
+            <span>BYTE-BITE</span>
+        </a>
+        <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Profile</a>
+    </header>
+
+    <main class="edit-wrap">
+        <section class="edit-card">
+            <h1>Personal Information</h1>
+            <p class="subcopy">Keep your account details updated for faster checkout and support.</p>
+
+            <div class="profile-upload">
+                <div class="avatar-circle" id="avatarCircle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <label for="file-upload" class="change-text">Upload Photo</label>
+                <input type="file" id="file-upload" accept="image/*">
+            </div>
+
+            <form id="editForm" novalidate>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="username">Full Name</label>
+                        <input type="text" id="username" placeholder="Your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">New Password</label>
+                        <input type="password" id="password" placeholder="Optional">
+                    </div>
+                </div>
+                <button type="submit" class="update-btn">Save Changes</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="edit-profile-script.js"></script>
+
+    <script src="back-button.js"></script>
+</body>
+</html>
+
+
+

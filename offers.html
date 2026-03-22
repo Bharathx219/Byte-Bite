@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers - Byte-Bite</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Rokkitt:wght@500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Unified App Styles -->
+    <link rel="stylesheet" href="shared-theme.css">
+    <link rel="stylesheet" href="landing-style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary, 'Montserrat', sans-serif);
+            background: #ffffff;
+            color: var(--bb-ink);
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: var(--bb-card);
+            box-shadow: var(--bb-shadow-sm);
+            z-index: 1000;
+            padding: 12px 20px;
+        }
+
+        .navbar-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+        }
+
+        .logo-box {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-brand {
+            font-family: var(--font-brand);
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--bb-bg);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            flex: 0 0 auto;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--bb-ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            color: var(--bb-accent);
+            background: rgba(255, 90, 31, 0.1);
+        }
+
+        .nav-item i {
+            font-size: 16px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: 0;
+            background: var(--bb-error);
+            color: var(--bb-card);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bb-bg) 0%, var(--bb-bg-deep) 100%);
+            color: var(--bb-card);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 90, 31, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-family: var(--font-brand);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            margin-bottom: 40px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: var(--bb-card);
+            border: 2px solid var(--bb-border);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--bb-accent);
+            color: var(--bb-accent);
+        }
+
+        .filter-tab.active {
+            background: var(--bb-accent);
+            color: var(--bb-card);
+            border-color: var(--bb-accent);
+        }
+
+        /* Offers Grid */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* Offer Card */
+        .offer-card {
+            background: var(--bb-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--bb-shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--bb-shadow-md);
+        }
+
+        .offer-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--bb-bg), var(--bb-accent));
+            position: relative;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--bb-error);
+            color: var(--bb-card);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .offer-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--bb-ink);
+        }
+
+        .offer-description {
+            font-size: 13px;
+            color: var(--bb-muted);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .offer-meta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--bb-border);
+        }
+
+        .meta-item {
+            font-size: 12px;
+            color: var(--bb-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .meta-item i {
+            color: var(--bb-accent);
+        }
+
+        .offer-code {
+            background: var(--bb-paper);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-text {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--bb-accent);
+        }
+
+        .copy-btn {
+            padding: 6px 12px;
+            background: var(--bb-accent);
+            color: var(--bb-card);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: var(--bb-accent-dark);
+        }
+
+        .offer-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .validity {
+            font-size: 12px;
+            color: var(--bb-muted);
+        }
+
+        .cta-btn {
+            padding: 10px 16px;
+            background: var(--bb-accent);
+            color: var(--bb-card);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            background: var(--bb-accent-dark);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--bb-muted);
+        }
+
+        .empty-state i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bb-ink);
+            color: var(--bb-card);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* --- Dineout Section --- */
+        .dineout-section {
+            margin-top: 60px;
+            margin-bottom: 20px;
+        }
+
+        .dineout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .dineout-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--bb-ink);
+            letter-spacing: -0.5px;
+        }
+
+        .dineout-nav {
+            display: flex;
+            gap: 12px;
+        }
+
+        .dineout-nav button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #e9e9eb;
+            color: #3d4152;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dineout-card {
+            background: var(--bb-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--bb-border-light);
+            transition: var(--transition);
+            box-shadow: var(--bb-shadow-sm);
+        }
+
+        .dineout-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dineout-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+        }
+
+        .dineout-title-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 2;
+        }
+
+        .dineout-title-overlay h3 {
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+            font-family: var(--font-primary);
+        }
+
+        .dineout-rating {
+            background: #1aa05f;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dineout-info {
+            padding: 18px;
+        }
+
+        .dineout-details-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--bb-muted);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .dineout-meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--bb-muted-light);
+            margin-bottom: 20px;
+        }
+
+        .dineout-action {
+            background: #1ea86f;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .offers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 16px;
+            }
+
+            .nav-item span {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-wrapper {
+                gap: 8px;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 18px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-tabs {
+                padding: 0 10px;
+            }
+
+            .filter-tab {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 300px) {
+            .offer-code {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .copy-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Standard Header Bar -->
+    <header>
+        <div class="logo-area" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <img src="Logo.png" alt="Byte-Bite Logo" class="logo-image">
+            <h1>BYTE - BITE</h1>
+        </div>
+
+        <div class="auth-profile-area">
+            <a href="search.html" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            <a href="offers.html" class="nav-link" style="color: var(--badge-yellow);"><i
+                    class="fa-solid fa-percent"></i> Offers</a>
+            <a href="help.html" class="nav-link"><i class="fa-solid fa-life-ring"></i> Help</a>
+            <a href="checkout.html" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+
+            <div class="profile-dropdown-container">
+                <a href="profile.html" class="profile-link">
+                    <div class="profile-circle"><i class="fa-solid fa-user"></i></div>
+                </a>
+
+                <div class="profile-menu" style="top: 50px; right: -10px;">
+                    <a href="profile.html">Profile</a>
+                    <a href="#orders">Orders</a>
+                    <a href="#favs">Favourites</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Toggle Tabs below Header -->
+    <div class="page-tabs-container">
+        <div class="page-tab active">Order Online</div>
+        <div class="page-tab" onclick="window.location.href='dineout.html'">Dineout</div>
+    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🎉 Exclusive Offers & Deals</h1>
+            <p>Save big on your favorite restaurants and dishes</p>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Filter Tabs -->
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Offers</button>
+                <button class="filter-tab" data-filter="discount">Discounts</button>
+                <button class="filter-tab" data-filter="cashback">Cashback</button>
+                <button class="filter-tab" data-filter="freedeliv">Free Delivery</button>
+                <button class="filter-tab" data-filter="flat">Flat OFF</button>
+            </div>
+        </div>
+
+        <!-- Offers Grid -->
+        <div class="offers-grid" id="offersGrid">
+            <!-- Offers will be populated here -->
+        </div>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fa-solid fa-tags"></i>
+            <p>No offers matching your criteria</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Byte-Bite. All rights reserved. Powered by bytes. Driven by bites.</p>
+    </footer>
+
+    <script src="cart-utils.js"></script>
+    <script>
+        // Sample Offers Data
+        const offersData = [
+            {
+                id: 1,
+                title: "50% OFF on First Order",
+                description: "Get 50% discount on your first food order. Maximum discount ₹200.",
+                type: "discount",
+                category: "New User Offer",
+                code: "FIRST50",
+                badge: "50% OFF",
+                validity: "Valid till Dec 31",
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=250&fit=crop",
+                minOrder: "₹100"
+            },
+            {
+                id: 2,
+                title: "Free Delivery on Orders Above ₹300",
+                description: "Enjoy free delivery when you order food worth ₹300 or more.",
+                type: "freedeliv",
+                category: "Delivery Offer",
+                code: "FREEDEL300",
+                badge: "FREE",
+                validity: "Valid till Dec 25",
+                image: "https://images.unsplash.com/photo-1601050690597-df0568f70948?w=400&h=250&fit=crop",
+                minOrder: "₹300"
+            },
+            {
+                id: 3,
+                title: "₹150 Cashback on Orders Above ₹500",
+                description: "Get ₹150 cashback when you place an order of ₹500 or more.",
+                type: "cashback",
+                category: "Cashback Offer",
+                code: "CASH150",
+                badge: "₹150 BACK",
+                validity: "Valid till Dec 20",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=250&fit=crop",
+                minOrder: "₹500"
+            },
+            {
+                id: 4,
+                title: "Flat ₹100 OFF on Weekend Orders",
+                description: "Flat ₹100 discount on orders placed on Saturday & Sunday.",
+                type: "flat",
+                category: "Weekend Special",
+                code: "WEEKEND100",
+                badge: "₹100 OFF",
+                validity: "Every Weekend",
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop",
+                minOrder: "₹200"
+            },
+            {
+                id: 5,
+                title: "30% OFF on Selected Restaurants",
+                description: "Get 30% discount on premium restaurant orders.",
+                type: "discount",
+                category: "Restaurant Offer",
+                code: "PREMIUM30",
+                badge: "30% OFF",
+                validity: "Valid till Dec 15",
+                image: "https://images.unsplash.com/photo-1585521537007-fc2b6a5a4e26?w=400&h=250&fit=crop",
+                minOrder: "₹250"
+            },
+            {
+                id: 6,
+                title: "Buy One Get One Free on Select Items",
+                description: "BOGO offer on selected fast food items. Limited time only!",
+                type: "discount",
+                category: "Flash Sale",
+                code: "BOGO2024",
+                badge: "BUY 1 GET 1",
+                validity: "Valid till Dec 10",
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=250&fit=crop",
+                minOrder: "₹150"
+            },
+            {
+                id: 7,
+                title: "₹50 Cashback on Second Order",
+                description: "Earn ₹50 cashback on your second order using this code.",
+                type: "cashback",
+                category: "New User",
+                code: "SECOND50",
+                badge: "₹50 BACK",
+                validity: "Valid till Dec 30",
+                image: "https://images.unsplash.com/photo-1600565193566-f86fcf4d4b94?w=400&h=250&fit=crop",
+                minOrder: "No Minimum"
+            },
+            {
+                id: 8,
+                title: "Free Delivery + ₹75 OFF This Week",
+                description: "Combine free delivery with ₹75 discount. Best week ever!",
+                type: "freedeliv",
+                category: "Week Special",
+                code: "WEEK2024",
+                badge: "75% COMBO",
+                validity: "Valid till Dec 12",
+                image: "https://images.unsplash.com/photo-1601050690597-df0568f70948?w=400&h=250&fit=crop",
+                minOrder: "₹200"
+            }
+        ];
+
+        // Render offers
+        function renderOffers(filter = 'all') {
+            const grid = document.getElementById('offersGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            let filtered = filter === 'all'
+                ? offersData
+                : offersData.filter(o => o.type === filter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            grid.innerHTML = filtered.map(offer => `
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('${offer.image}'); background-size: cover; background-position: center;">
+                        <span class="offer-badge">${offer.badge}</span>
+                    </div>
+                    
+                    <div class="offer-info">
+                        <h3 class="offer-title">${offer.title}</h3>
+                        <p class="offer-description">${offer.description}</p>
+                        
+                        <div class="offer-meta">
+                            <div class="meta-item">
+                                <i class="fa-solid fa-tag"></i>
+                                <span>${offer.category}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>Min: ${offer.minOrder}</span>
+                            </div>
+                        </div>
+
+                        <div class="offer-code">
+                            <span class="code-text">${offer.code}</span>
+                            <button class="copy-btn" onclick="copyCode('${offer.code}')">Copy</button>
+                        </div>
+
+                        <div class="offer-footer">
+                            <span class="validity">
+                                <i class="fa-solid fa-calendar"></i> ${offer.validity}
+                            </span>
+                            <button class="cta-btn" onclick="applyOffer('${offer.code}')">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Copy code function
+        function copyCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied: ' + code);
+            });
+        }
+
+        // Apply offer function
+        function applyOffer(code) {
+            alert('Code ' + code + ' applied! Add items to cart to see discount.');
+            window.location.href = 'search.html';
+        }
+
+        // Filter tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+                renderOffers(filter);
+            });
+        });
+
+        // Update cart count
+        function updateCartCount() {
+            const count = ByteBiteCart && ByteBiteCart.getItemCount ? ByteBiteCart.getItemCount() : 0;
+            const badge = document.getElementById('navCartCount');
+            if (count > 0) {
+                badge.textContent = count;
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('cartUpdated', updateCartCount);
+        window.addEventListener('load', () => {
+            renderOffers();
+            updateCartCount();
+        });
+    </script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

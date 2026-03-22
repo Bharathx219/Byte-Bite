@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte-Bite - Food Delivery</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rokkitt:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: #f5f5f5;
+            color: var(--bb-ink);
+        }
+
+        /* Modern Sticky Navbar */
+        .modern-navbar {
+            position: sticky;
+            top: 0;
+            background: var(--bb-card);
+            box-shadow: var(--bb-shadow-sm);
+            z-index: 1000;
+            padding: 12px 0;
+        }
+
+        .navbar-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .navbar-logo {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-brand);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--bb-bg);
+            white-space: nowrap;
+        }
+
+        .navbar-center {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .location-input-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: var(--bb-paper);
+            border: 1px solid var(--bb-border);
+            border-radius: 8px;
+            transition: var(--transition);
+            flex: 0 1 auto;
+        }
+
+        .location-input-group:hover,
+        .location-input-group:focus-within {
+            border-color: var(--bb-accent);
+            box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.1);
+        }
+
+        .location-input-group i {
+            color: var(--bb-accent);
+            font-size: 14px;
+        }
+
+        .location-input-group input {
+            border: none;
+            background: transparent;
+            font-family: var(--font-primary);
+            font-size: 13px;
+            color: var(--bb-ink);
+            width: 100%;
+        }
+
+        .location-input-group input::placeholder {
+            color: var(--bb-muted);
+        }
+
+        .location-input-group input:focus {
+            outline: none;
+        }
+
+        .navbar-search {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: var(--bb-paper);
+            border: 1px solid var(--bb-border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .navbar-search:hover {
+            border-color: var(--bb-accent);
+            box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.1);
+        }
+
+        .navbar-search i {
+            color: var(--bb-accent);
+            font-size: 14px;
+        }
+
+        .navbar-search input {
+            border: none;
+            background: transparent;
+            font-family: var(--font-primary);
+            font-size: 13px;
+            color: var(--bb-ink);
+            width: 100%;
+            cursor: pointer;
+            pointer-events: none;
+        }
+
+        .navbar-search input::placeholder {
+            color: var(--bb-muted);
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .navbar-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--bb-ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .navbar-item:hover {
+            color: var(--bb-accent);
+            background: rgba(255, 90, 31, 0.1);
+        }
+
+        .navbar-item i {
+            font-size: 16px;
+        }
+
+        .cart-badge {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--bb-error);
+            color: var(--bb-card);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .cart-count.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-search input {
+                display: none;
+            }
+
+            .navbar-center {
+                display: none;
+            }
+
+            .navbar-item span {
+                display: none;
+            }
+
+            .navbar-wrapper {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-left {
+                gap: 10px;
+            }
+
+            .navbar-brand {
+                font-size: 16px;
+            }
+
+            .navbar-logo {
+                width: 28px;
+                height: 28px;
+            }
+
+            .navbar-right {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modern Sticky Navbar (Swiggy Style) -->
+    <nav class="modern-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-left">
+                <img src="Logo.png" alt="Byte-Bite Logo" class="navbar-logo">
+                <span class="navbar-brand">Byte-Bite</span>
+            </div>
+
+            <div class="navbar-center">
+                <div class="location-input-group">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" placeholder="Delivery location" id="locationNav">
+                </div>
+                <div class="navbar-search" onclick="window.location.href='search.html'">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search restaurants..." readonly>
+                </div>
+            </div>
+
+            <div class="navbar-right">
+                <a href="search.html" class="navbar-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </a>
+                <a href="dineout.html" class="navbar-item">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Dine Out</span>
+                </a>
+                <a href="offers-modern.html" class="navbar-item">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="checkout.html" class="navbar-item cart-badge">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span id="navCartCount" class="cart-count hidden">0</span>
+                </a>
+                <a href="profile.html" class="navbar-item">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Original Hero & Content -->
+    <div class="container">
+        
+        <section class="hero">
+            <h2 class="slogan">Powered by bytes. Driven by bites.</h2>
+            
+            <div class="search-row">
+                <div class="input-group location-box">
+                    <i class="fa-solid fa-location-dot red-icon"></i>
+                    <input type="text" placeholder="enter your delivery location" id="locationHero">
+                </div>
+                
+                <div class="input-group search-box" onclick="window.location.href='search.html'" style="cursor: pointer;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="search for restaurant, items or more" style="cursor: pointer; pointer-events: none;">
+                </div>
+            </div>
+        </section>
+
+        <section class="cards-container">
+        
+            <div class="card">
+                <h3>NON- VEG</h3>
+                <div class="badge">UPTO 40 % OFF</div>
+                <button class="arrow-btn" onclick="window.location.href='nonveg.html'">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <div class="card-image-wrapper">
+                    <img src="Biryani.png" alt="Biryani">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>VEG SPECIALS</h3>
+                <div class="badge">UPTO 50 % OFF</div>
+                <button class="arrow-btn" onclick="window.location.href='veg.html'">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <div class="card-image-wrapper">
+                    <img src="paneer-removebg-preview.png" alt="Paneer">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>FAST FOODS</h3>
+                <div class="badge">UPTO 40 % OFF</div>
+                <button class="arrow-btn" onclick="window.location.href='fastfood.html'">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <div class="card-image-wrapper">
+                    <img src="Fastfood-removebg-preview.png" alt="Fast Food">
+                </div>
+            </div>
+
+        </section>
+
+        <div class="footer-decoration">
+            <div class="line"></div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" class="cute-burger" alt="Cute Burger">
+        </div>
+    </div>
+
+    <script src="cart-utils.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Update cart count on page load
+        function updateNavCartCount() {
+            const totalItems = ByteBiteCart && ByteBiteCart.getItemCount ? ByteBiteCart.getItemCount() : 0;
+            const countBadge = document.getElementById('navCartCount');
+            if (totalItems > 0) {
+                countBadge.textContent = totalItems;
+                countBadge.classList.remove('hidden');
+            } else {
+                countBadge.classList.add('hidden');
+            }
+        }
+
+        // Listen to cart changes
+        document.addEventListener('cartUpdated', updateNavCartCount);
+        window.addEventListener('load', updateNavCartCount);
+        
+        // Update every second for real-time sync
+        setInterval(updateNavCartCount, 1000);
+    </script>
+
+    <script src="back-button.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paneer Butter Masala | Byte - Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="product-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo-box">
+                <img src="Logo.png" alt="Logo" class="nav-logo">
+            </div>
+            <div class="breadcrumb">
+                <a href="menu.html">Home</a> <i class="fa-solid fa-chevron-right"></i>
+                <a href="veg.html">Veg Specials</a> <i class="fa-solid fa-chevron-right"></i>
+                <span>Paneer Butter Masala</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="search.html" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="checkout.html" class="nav-item cart-icon-wrap">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="nav-item"><i class="fa-solid fa-circle-user"></i></a>
+        </div>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-visuals">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800&h=800&fit=crop"
+                    alt="Paneer Butter Masala" class="main-dish-img">
+                <div class="veg-nonveg-badge" style="border-color: #0f8a65;">
+                    <i class="fa-solid fa-circle" style="color: #0f8a65; font-size: 8px;"></i>
+                </div>
+            </div>
+
+            <div class="food-stats">
+                <div class="stat-item"><i class="fa-solid fa-fire"></i><span>420 Kcal</span></div>
+                <div class="stat-item"><i class="fa-solid fa-clock"></i><span>20 Mins</span></div>
+                <div class="stat-item"><i class="fa-solid fa-star"></i><span>4.7 (300+)</span></div>
+            </div>
+        </div>
+
+        <div class="product-details">
+            <h1 class="dish-title">Paneer Butter Masala</h1>
+            <p class="restaurant-name">By Kasthuri Pure Veg</p>
+            <p class="dish-desc">
+                Soft paneer cubes simmered in a rich, creamy, and mildly spiced tomato-based gravy, flavored with butter
+                and kasuri methi. Served best with naan or roti.
+            </p>
+
+            <div class="price-section">
+                <span class="current-price">Rs. <span id="displayPrice" data-base-price="199">199</span></span>
+            </div>
+
+            <hr class="divider">
+
+            <form id="customizationForm">
+                <div class="addon-group">
+                    <h3>Choice of Bread</h3>
+                    <label class="radio-option">
+                        <input type="radio" name="portion" value="0" checked onchange="updateTotal()">
+                        <span class="radio-circle"></span>
+                        No Bread (Curry Only)
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="portion" value="45" onchange="updateTotal()">
+                        <span class="radio-circle"></span>
+                        2 Butter Naan <span class="price-add">+ Rs. 45</span>
+                    </label>
+                </div>
+
+                <div class="addon-group">
+                    <h3>Add-ons (Optional)</h3>
+                    <label class="checkbox-option">
+                        <input type="checkbox" value="25" onchange="updateTotal()">
+                        <span class="checkmark"></span>
+                        Extra Butter <span class="price-add">+ Rs. 25</span>
+                    </label>
+                </div>
+            </form>
+
+            <div class="action-area">
+                <div class="qty-selector">
+                    <button type="button" onclick="changeQty(-1)">-</button>
+                    <span id="qtyDisplay">1</span>
+                    <button type="button" onclick="changeQty(1)">+</button>
+                </div>
+
+                <button type="button" class="add-to-cart-btn" onclick="addToCart()">
+                    ADD TO CART - Rs. <span id="finalPrice">199</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related items remain the same -->
+    <div class="related-section">
+        <h2>Complete your meal with</h2>
+        <div class="related-grid">
+            <div class="mini-card">
+                <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&h=200&fit=crop" alt="Coke">
+                <div class="mini-info">
+                    <h4>Coke (250ml)</h4>
+                    <div class="mini-action">
+                        <span>Rs. 40</span>
+                        <button type="button" class="mini-add" data-name="Coke (250ml)" data-price="40"
+                            data-image="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&h=200&fit=crop">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mini-card">
+                <img src="https://images.unsplash.com/photo-1599487488020-f4162f4b4f3b?w=200&h=200&fit=crop"
+                    style="object-fit:cover; border-radius:8px;" alt="Kebab">
+                <div class="mini-info">
+                    <h4>Chicken Kebab</h4>
+                    <div class="mini-action">
+                        <span>Rs. 150</span>
+                        <button type="button" class="mini-add" data-name="Chicken Kebab" data-price="150"
+                            data-image="https://images.unsplash.com/photo-1599487488020-f4162f4b4f3b?w=200&h=200&fit=crop">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mini-card">
+                <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=200&h=200&fit=crop"
+                    style="object-fit:cover; border-radius:8px;" alt="Sweet">
+                <div class="mini-info">
+                    <h4>Gulab Jamun</h4>
+                    <div class="mini-action">
+                        <span>Rs. 60</span>
+                        <button type="button" class="mini-add" data-name="Gulab Jamun" data-price="60"
+                            data-image="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=200&h=200&fit=crop">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-section">
+        <div class="reviews-header">
+            <h2 class="reviews-title">Customer Reviews</h2>
+            <button class="add-review-btn" onclick="openReviewModal()">Write a Review</button>
+        </div>
+
+        <div class="review-stats-card">
+            <div class="big-rating" id="avgRatingDisplay">--</div>
+            <div>
+                <div class="star-line" id="avgStarsDisplay">
+                    <i class="fa-solid fa-star" style="color:#ddd"></i>
+                    <i class="fa-solid fa-star" style="color:#ddd"></i>
+                    <i class="fa-solid fa-star" style="color:#ddd"></i>
+                    <i class="fa-solid fa-star" style="color:#ddd"></i>
+                    <i class="fa-solid fa-star" style="color:#ddd"></i>
+                </div>
+                <div class="total-reviews-count" id="totalReviewsDisplay">Loading reviews...</div>
+            </div>
+        </div>
+
+        <div class="review-list" id="reviewsContainer">
+            <!-- Reviews will be injected here dynamically -->
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="review-modal-overlay" id="reviewModal">
+        <div class="review-modal">
+            <i class="fa-solid fa-xmark close-modal" onclick="closeReviewModal()"></i>
+            <h3 class="modal-title">Rate this Dish</h3>
+            <form id="reviewForm" onsubmit="submitReview(event)">
+                <div class="star-rating-select">
+                    <input type="radio" id="p-star5" name="rating" value="5" required />
+                    <label for="p-star5" title="5 stars"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" id="p-star4" name="rating" value="4" />
+                    <label for="p-star4" title="4 stars"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" id="p-star3" name="rating" value="3" />
+                    <label for="p-star3" title="3 stars"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" id="p-star2" name="rating" value="2" />
+                    <label for="p-star2" title="2 stars"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" id="p-star1" name="rating" value="1" />
+                    <label for="p-star1" title="1 star"><i class="fa-solid fa-star"></i></label>
+                </div>
+                <textarea class="review-textarea" id="reviewComment" placeholder="Share details of your own experience..." required></textarea>
+                <button type="submit" class="submit-review-btn" id="submitReviewBtn">Post Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="cart-utils.js"></script>
+    <script src="product-script.js"></script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte - Bite Non-Veg</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="nonveg-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo-box">
+                <img src="Logo.png" alt="Logo" class="nav-logo">
+            </div>
+            <div class="location-dropdown">
+                <span>other</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="menu.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="search.html" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>search</span>
+            </a>
+            <a href="offers.html" class="nav-item">
+                <i class="fa-solid fa-percent"></i>
+                <span>offers</span>
+            </a>
+            <a href="help.html" class="nav-item">
+                <i class="fa-solid fa-handshake"></i>
+                <span>help</span>
+            </a>
+            <a href="checkout.html" class="nav-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+                <span class="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <section class="mind-section">
+            <div class="section-header">
+                <h2>what's on your mind ?</h2>
+                <div class="nav-arrows">
+                    <button class="arrow-btn" id="scrollLeft"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="arrow-btn" id="scrollRight"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="carousel-container" id="carousel">
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Biryani">
+                    <p>Chicken biryani</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1603894584202-93306d39c361?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Butter Chicken">
+                    <p>Butter chicken</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Tandoori">
+                    <p>Chicken tandoori</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Prawns">
+                    <p>Prawns masala</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Chicken 65">
+                    <p>Chicken 65</p>
+                </div>
+                <div class="circle-item">
+                    <img src="https://images.unsplash.com/photo-1516714435131-44eb1e6c5677?w=200&h=200&fit=crop"
+                        style="border-radius: 50%;" alt="Mutton">
+                    <p>Mutton rogan josh</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="restaurants-section">
+            <h2>Top restaurants in Vizianagaram</h2>
+
+            <div class="restaurant-grid">
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?w=500&h=350&fit=crop"
+                            alt="Food">
+                        <div class="price-badge">Items at ₹199</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>Star Point Biryani</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.5
+                            </div>
+                        </div>
+                        <p class="time-text">20 - 30 min</p>
+                    </div>
+                </div>
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=500&h=350&fit=crop"
+                            alt="Food">
+                        <div class="price-badge">Items at ₹99</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>HIGHTIDE</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.3
+                            </div>
+                        </div>
+                        <p class="time-text">25 - 30 min</p>
+                    </div>
+                </div>
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?w=500&h=350&fit=crop"
+                            alt="Food">
+                        <div class="price-badge">Items at ₹99</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>The Northern Circars</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.7
+                            </div>
+                        </div>
+                        <p class="time-text">30 - 35 min</p>
+                    </div>
+                </div>
+
+                <div class="rest-card" style="cursor: pointer;" onclick="window.location.href='product.html'">
+                    <div class="rest-img-box">
+                        <img src="https://images.unsplash.com/photo-1603894584202-93306d39c361?w=500&h=350&fit=crop"
+                            alt="Food">
+                        <div class="price-badge">Items at ₹299</div>
+                    </div>
+                    <div class="rest-info">
+                        <h3>Multi Kitchen Restaurant</h3>
+                        <div class="rating-row">
+                            <div class="star-rating">
+                                <i class="fa-solid fa-circle-check"></i> 4.6
+                            </div>
+                        </div>
+                        <p class="time-text">35 - 40 min</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    <script src="cart-utils.js"></script>
+    <script src="nonveg-script.js"></script>
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

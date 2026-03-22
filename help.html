@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte - Bite | Help Support</title>
+
+    <!-- Professional & Premium Fonts from shared-theme -->
+    <link rel="stylesheet" href="shared-theme.css">
+    <link rel="stylesheet" href="landing-style.css">
+    <link rel="stylesheet" href="help.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #fcf9f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation Area / Header Bar -->
+    <header>
+        <div class="logo-area" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <img src="Logo.png" alt="Byte-Bite Logo" class="logo-image">
+            <h1>BYTE - BITE</h1>
+        </div>
+
+        <div class="auth-profile-area">
+            <a href="search.html" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            <a href="offers.html" class="nav-link"><i class="fa-solid fa-percent"></i> Offers</a>
+            <a href="help.html" class="nav-link"><i class="fa-solid fa-life-ring"></i> Help</a>
+            <a href="checkout.html" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+
+            <div class="profile-dropdown-container">
+                <a href="profile.html" class="profile-link">
+                    <div class="profile-circle"><i class="fa-solid fa-user"></i></div>
+                </a>
+
+                <div class="profile-menu" style="top: 50px; right: -10px;">
+                    <a href="profile.html">Profile</a>
+                    <a href="#orders">Orders</a>
+                    <a href="#favs">Favourites</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Help Banner -->
+    <div class="help-banner">
+        <!-- Re-using the FastFood image that looks remarkably close to the user's Burger King Mockup -->
+        <img src="Fastfood-removebg-preview.png" alt="Fast Food Banner Menu">
+    </div>
+
+    <!-- Help Content Area (Split Form vs Info) -->
+    <div class="help-content-container">
+
+        <!-- Form Column (Left side) -->
+        <div class="help-form-column">
+            <div class="help-form-group">
+                <input type="text" class="help-input" placeholder="HOW CAN WE HELP YOU ? *">
+            </div>
+
+            <div class="help-form-group">
+                <input type="text" class="help-input" placeholder="FULL NAME *">
+            </div>
+
+            <div class="help-form-group">
+                <input type="email" class="help-input" placeholder="EMAIL ADDRESS *">
+            </div>
+
+            <div class="help-form-group">
+                <input type="tel" class="help-input" placeholder="MOBILE NUMBER (OPTIONAL)">
+            </div>
+
+            <div class="help-form-group">
+                <textarea class="help-input" placeholder="TYPE TEXT *"></textarea>
+            </div>
+        </div>
+
+        <!-- Info Column (Right side) -->
+        <div class="help-info-column">
+            <div class="info-box">
+                <h3>REPORT A SAFETY EMERGENCY</h3>
+                <p>We are committed to the safety of everyone using BYTE - BITE</p>
+                <a href="#" class="info-link">REPORT HERE *</a>
+            </div>
+
+            <div class="info-box">
+                <h3>ISSUES WITH YOUR LIVE ORDER</h3>
+                <p>Click on the support or online ordering help section in your app to connect to our customer support
+                    team.</p>
+            </div>
+
+            <div class="submit-btn-wrapper">
+                <button class="help-submit-btn"
+                    onclick="this.innerHTML='SUBMITTED SUCCESSFULLY <i class=\'fa-solid fa-check\'></i>'; this.style.backgroundColor='#8c2828'; this.style.color='#ffffff'; this.style.borderColor='#8c2828'; setTimeout(() => { window.location.href='index.html' }, 2000)">SUBMIT</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

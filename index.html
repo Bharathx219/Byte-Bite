@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte - Bite</title>
+
+    <!-- Professional & Premium Fonts from shared-theme -->
+    <link rel="stylesheet" href="shared-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="landing-style.css">
+</head>
+
+<body>
+
+    <!-- Top Navigation Area / Header Bar -->
+    <header>
+        <div class="logo-area" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <img src="Logo.png" alt="Byte-Bite Logo" class="logo-image">
+            <h1>BYTE - BITE</h1>
+        </div>
+
+        <div class="auth-profile-area">
+
+            <a href="login.html" class="auth-btn auth-btn-signin">
+                Sign In
+            </a>
+            <a href="signup.html" class="auth-btn auth-btn-signup">
+                Sign Up
+            </a>
+        </div>
+    </header>
+
+    <!-- Background Graphics -->
+    <img src="splash.png" alt="Splash Effect" class="bg-splash-left">
+    <img src="Pizza.png" alt="Large Pizza Display" class="bg-pizza-right">
+
+    <!-- Floating Decorative Burger -->
+    <img src="Fastfood-removebg-preview.png" alt="Floating Fast Food" class="bg-floating-burger">
+
+    <div class="container">
+
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2 class="slogan">Powered by bytes. Driven by bites.</h2>
+
+            <div class="search-row">
+                <div class="input-group location-box">
+                    <i class="fa-solid fa-location-dot red-icon"></i>
+                    <input type="text" placeholder="enter your delivery location">
+                </div>
+
+                <div class="input-group search-box" onclick="window.location.href='search.html'">
+                    <i class="fa-solid fa-magnifying-glass search-icon" style="color:#1a1a1a;"></i>
+                    <input type="text" placeholder="search for restaurant,items or more" style="cursor: pointer;"
+                        readonly>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Cards Grid -->
+        <section class="cards-container">
+
+            <div class="card" onclick="window.location.href='nonveg.html'">
+                <h3>NON- VEG</h3>
+                <div class="badge">UPTO 40 % OFF</div>
+                <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                <div class="card-image-wrapper">
+                    <img src="Biryani.png" alt="Biryani Bowl">
+                </div>
+            </div>
+
+            <div class="card" onclick="window.location.href='veg.html'">
+                <h3>VEG SPECIALS</h3>
+                <div class="badge">UPTO 50 % OFF</div>
+                <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                <div class="card-image-wrapper">
+                    <img src="paneer-removebg-preview.png" alt="Paneer Dish">
+                </div>
+            </div>
+
+            <div class="card" onclick="window.location.href='fastfood.html'">
+                <h3>FAST FOODS</h3>
+                <div class="badge">UPTO 40 % OFF</div>
+                <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                <div class="card-image-wrapper">
+                    <img src="Fastfood-removebg-preview.png" alt="Burgers and Fries">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer Decor -->
+        <div class="footer-decoration">
+            <div class="line"></div>
+            <img src="Fastfood-removebg-preview.png" class="cute-burger" alt="Cute Burger">
+        </div>
+
+    </div>
+
+
+    <script src="back-button.js"></script>
+</body>
+
+</html>

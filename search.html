@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Byte-Bite</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rokkitt:wght@700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="search-style.css">
+    <link rel="stylesheet" href="shared-theme.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: #f5f5f5;
+            color: var(--bb-ink);
+        }
+
+        /* Modern Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: var(--bb-card);
+            box-shadow: var(--bb-shadow-sm);
+            z-index: 1000;
+            padding: 12px 20px;
+        }
+
+        .navbar-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-brand {
+            font-family: var(--font-brand);
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--bb-bg);
+        }
+
+        .location-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--bb-muted);
+            font-size: 13px;
+            padding: 8px 12px;
+            background: var(--bb-paper);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .location-dropdown:hover {
+            background: rgba(255, 90, 31, 0.1);
+            color: var(--bb-accent);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--bb-ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            color: var(--bb-accent);
+            background: rgba(255, 90, 31, 0.1);
+        }
+
+        .nav-item i {
+            font-size: 16px;
+        }
+
+        .nav-item span {
+            text-transform: capitalize;
+        }
+
+        @media (max-width: 768px) {
+            .nav-item span {
+                display: none;
+            }
+
+            .navbar-wrapper {
+                gap: 12px;
+            }
+
+            .location-dropdown {
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+
+            .nav-left {
+                gap: 8px;
+            }
+
+            .logo-box {
+                width: 28px;
+                height: 28px;
+            }
+
+            .nav-brand {
+                font-size: 14px;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .nav-item {
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-wrapper">
+            <div class="nav-left">
+                <div class="logo-box">
+                    <img src="Logo.png" alt="Logo" class="nav-logo">
+                </div>
+                <span class="nav-brand">Byte-Bite</span>
+                <div class="location-dropdown">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="navLocation">Your Location</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="menu.html" class="nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="offers.html" class="nav-item">
+                    <i class="fa-solid fa-percent"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="checkout.html" class="nav-item">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+                <a href="help.html" class="nav-item">
+                    <i class="fa-solid fa-question"></i>
+                    <span>Help</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        
+        <div class="search-wrapper">
+            <input type="text" placeholder="Search for dishes..." class="search-input" autofocus>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+
+        <div class="popular-section">
+            <h2 class="section-title">Popular Dishes</h2>
+            
+            <div class="dishes-grid">
+                <div class="dish-item">
+                    <div class="dish-img-circle">
+                        <img src="https://www.pngmart.com/files/1/Pepperoni-Pizza-PNG-Transparent-Image.png" alt="Pizza">
+                    </div>
+                    <p>pizzas</p>
+                </div>
+
+                <div class="dish-item">
+                    <div class="dish-img-circle">
+                        <img src="biryanis.jpeg" alt="Biryani">
+                    </div>
+                    <p>biryani</p>
+                </div>
+
+                <div class="dish-item">
+                    <div class="dish-img-circle">
+                        <img src="momos.jpeg" alt="Momos">
+                    </div>
+                    <p>momos</p>
+                </div>
+
+                <div class="dish-item">
+                    <div class="dish-img-circle">
+                        <img src="thali.jpeg" alt="Indian Thali">
+                    </div>
+                    <p>indian thali</p>
+                </div>
+
+                <div class="dish-item">
+                    <div class="dish-img-circle">
+                        <img src="bgfr.jpeg" alt="Burger">
+                    </div>
+                    <p>burger & fries</p>
+                </div>
+
+                <div class="dish-item">
+                    <div class="dish-img-circle">
+                        <img src="noodles.jpeg" alt="Noodles">
+                    </div>
+                    <p>noodles</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="search-script.js"></script>
+
+    <script src="back-button.js"></script>
+</body>
+</html>
+
+
+

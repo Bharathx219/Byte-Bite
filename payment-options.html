@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options | Byte - Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="payment-options.css">
+    <link rel="stylesheet" href="shared-theme.css">
+</head>
+<body>
+    <main class="payment-card">
+        <a class="back-link" href="checkout.html"><i class="fa-solid fa-arrow-left"></i></a>
+        <h1>Payment Options</h1>
+
+        <div class="options-wrap">
+            <button class="pay-btn" onclick="window.location.href='online-payment.html'">
+                Online Payment
+            </button>
+            <span class="or-text">OR</span>
+            <button class="pay-btn" onclick="window.location.href='order-success.html?method=cod'">
+                Cash on Delivery
+            </button>
+        </div>
+    </main>
+
+    <script src="back-button.js"></script>
+</body>
+</html>
+
+
+
